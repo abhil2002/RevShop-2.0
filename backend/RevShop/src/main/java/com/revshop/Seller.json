@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "message": "Login successful",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJldmFuQGdtYWlsLmNvbSIsImlhdCI6MTc3MTU5NTQ0OCwiZXhwIjoxNzcxNjgxODQ4fQ.B4nZpPA0xmzp599IKkTmcHQV4e2KkJC5Fvi8UepNdLo",
+    "role": "SELLER",
+    "email": "evan@gmail.com"
+  }
+}

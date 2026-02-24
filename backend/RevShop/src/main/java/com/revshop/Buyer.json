@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "message": "Login successful",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmhpQGdtYWlsLmNvbSIsImlhdCI6MTc3MTU5NTU0NSwiZXhwIjoxNzcxNjgxOTQ1fQ.kz3BdviWuO5635y8odhH73OyIAeEcs30f8Lif5RReMo",
+    "role": "BUYER",
+    "email": "abhi@gmail.com"
+  }
+}

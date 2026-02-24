@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "message": "Registration successful",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZWxsZXJAdGVzdC5jb20iLCJyb2xlIjoiU0VMTEVSIiwiaWF0IjoxNzcxODcyOTE5LCJleHAiOjE3NzE5NTkzMTl9.Xegyj0dPmaS5Jeq3EzKxHNHdz2uverkWSYO6BoZOUu8",
+    "role": "SELLER",
+    "email": "seller@test.com",
+
+
+
+    "name": "Seller One",
+    "email": "seller@test.com",
+    "password": "password123",
+    "phone": "9999999999",
+    "address": "Mumbai",
+    "role": "SELLER"
+  }
+}
+
+
+
+
+

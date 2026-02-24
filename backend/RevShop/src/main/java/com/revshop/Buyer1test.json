@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "message": "Registration successful",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJidXllckB0ZXN0LmNvbSIsInJvbGUiOiJCVVlFUiIsImlhdCI6MTc3MTY2MDMxMywiZXhwIjoxNzcxNzQ2NzEzfQ.24Vse0OSTDuXk80I5F57dsFoH8OhOuWIe9mFmaH5Hfw",
+    "role": "BUYER",
+    "email": "buyer@test.com",
+    "password": "password123"
+  }
+}
