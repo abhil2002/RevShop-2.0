@@ -1,0 +1,69 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>Rev<span>Shop</span></h2>
+      <p>Create your account</p>
+    </div>
+
+    <div class="role-selector">
+      <button type="button" 
+              [class.active]="registerForm.get('role')?.value === 'BUYER'"
+              (click)="registerForm.patchValue({role: 'BUYER'})">Buyer</button>
+      <button type="button" 
+              [class.active]="registerForm.get('role')?.value === 'SELLER'"
+              (click)="registerForm.patchValue({role: 'SELLER'})">Seller</button>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" formControlName="name" placeholder="Enter your full name">
+      </div>
+
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" formControlName="email" placeholder="name@example.com">
+      </div>
+
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" formControlName="phone" placeholder="10-digit mobile number">
+      </div>
+
+      <div class="field">
+        <label>Address</label>
+        <input type="text" formControlName="address" placeholder="City, State, Zip">
+      </div>
+
+      <div class="field password-wrap">
+        <label>Password</label>
+        <input [type]="showPassword() ? 'text' : 'password'" 
+               formControlName="password" 
+               placeholder="Minimum 6 characters">
+        <button type="button" class="eye-toggle" (click)="togglePassword()">
+          {{ showPassword() ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <div class="strength-meter">
+        <div class="bar" [style.width.%]="passwordStrength()" 
+             [class.weak]="passwordStrength() < 50"
+             [class.medium]="passwordStrength() >= 50 && passwordStrength() < 100"
+             [class.strong]="passwordStrength() === 100">
+        </div>
+      </div>
+
+      @if (errorMessage()) {
+        <div class="error-msg">{{ errorMessage() }}</div>
+      }
+
+      <button type="submit" class="submit-btn" [disabled]="registerForm.invalid || isLoading()">
+        {{ isLoading() ? 'Creating Profile...' : 'Sign Up' }}
+      </button>
+
+      <p class="auth-footer">
+        Already a member? <a routerLink="/login">Log in here</a>
+      </p>
+    </form>
+  </div>
+</div>

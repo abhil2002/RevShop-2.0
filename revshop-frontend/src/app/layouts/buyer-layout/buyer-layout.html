@@ -1,0 +1,79 @@
+<div class="marketplace-wrapper">
+  <aside class="filter-sidebar">
+    <div class="sidebar-section">
+      <h3>Categories</h3>
+      <div class="category-list">
+        <button [class.active]="!category()" (click)="category.set(''); fetchProducts()">All Items</button>
+        @for (cat of categories(); track cat) {
+          <button [class.active]="category() === cat" (click)="category.set(cat); fetchProducts()">{{ cat }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Sort Results</h3>
+      <mat-radio-group [(ngModel)]="sortOption" (change)="fetchProducts()">
+        <mat-radio-button value="default">Latest Arrivals</mat-radio-button>
+        <mat-radio-button value="priceAsc">Price: Low to High</mat-radio-button>
+        <mat-radio-button value="priceDesc">Price: High to Low</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </aside>
+
+  <main class="content-area">
+    <header class="content-header">
+      <div class="search-bar-modern">
+        <mat-icon>search</mat-icon>
+        <input type="text" placeholder="Search for products..." [ngModel]="keyword()" (ngModelChange)="onSearchChange($event)">
+      </div>
+      <div class="results-count">
+        Showing <strong>{{ products().length }}</strong> products
+      </div>
+    </header>
+
+    @if (isLoading()) {
+      <div class="shimmer-container">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    }
+
+    <div class="product-grid">
+      @for (product of products(); track product.id) {
+        <div class="product-item">
+          <div class="product-card">
+            <div class="image-area">
+              <span class="stock-tag" [class.low]="product.quantity < 5">
+                {{ product.quantity < 5 ? 'Only ' + product.quantity + ' left' : 'In Stock' }}
+              </span>
+              <button class="fav-btn" (click)="toggleFavorite(product.id)" [class.active]="favorites().includes(product.id)">
+                <mat-icon>{{ favorites().includes(product.id) ? 'favorite' : 'favorite_border' }}</mat-icon>
+              </button>
+              <div class="img-placeholder">
+                 <mat-icon>shopping_bag</mat-icon>
+              </div>
+            </div>
+
+            <div class="info-area">
+              <small>{{ product.category }}</small>
+              <h4>{{ product.name }}</h4>
+              <div class="price-box">
+                <span class="main-price">₹{{ product.discountedPrice }}</span>
+                @if (product.mrp > product.discountedPrice) {
+                  <span class="mrp">₹{{ product.mrp }}</span>
+                }
+              </div>
+            </div>
+
+            <div class="hover-actions">
+              <button class="view-btn" [routerLink]="['/products', product.id]">View Details</button>
+              <button class="cart-btn" (click)="addToCart(product.id)">
+                <mat-icon>add_shopping_cart</mat-icon>
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+</div>
